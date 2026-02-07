@@ -1,8 +1,10 @@
 'use client';
 import Image from 'next/image';
 import { FaArrowRight } from 'react-icons/fa';
+import { useModal } from '@/context/ModalContext';
 
 export default function Hero() {
+  const { openModal } = useModal();
   return (
     <section className="hero-section">
       <div className="glow-effect"></div>
@@ -24,8 +26,8 @@ export default function Hero() {
             </p>
             
             <div className="cta-group">
-               <button className="btn btn-primary">
-                 Get a Quote
+               <button className="btn btn-primary" onClick={openModal}>
+                 Get a Callback
                </button>
                <button className="btn btn-outline">
                  Our Solutions

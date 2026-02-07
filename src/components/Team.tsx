@@ -2,10 +2,10 @@
 import { FaLinkedin, FaTwitter } from 'react-icons/fa';
 
 const team = [
-  { name: 'John Smith', role: 'Operations Director', exp: '15 years experience' },
-  { name: 'Sarah Wilson', role: 'QA Lead', exp: '8 years experience' },
-  { name: 'Michael Chen', role: 'Tech Support Lead', exp: '10 years experience' },
-  { name: 'Emily Davis', role: 'Client Success Manager', exp: '6 years experience' },
+  { name: 'Sarah Jenkins', role: 'Head of Business Transformation', exp: 'Lean Six Sigma Black Belt' },
+  { name: 'David Chen', role: 'Process Innovation Lead', exp: '12+ Years in BPO' },
+  { name: 'Priya Patel', role: 'Automation Architect', exp: 'RPA & AI Specialist' },
+  { name: 'James Wilson', role: 'Quality & Compliance Director', exp: 'ISO 9001 Lead Auditor' },
 ];
 
 export default function Team() {
@@ -14,11 +14,11 @@ export default function Team() {
       <div className="container">
         <div className="section-header-wrapper">
           <h2 style={{ fontSize: '2.5rem', fontWeight: 700 }}>
-            Meet <span className="highlight">the Team</span>
+            Meet our <span className="highlight">BPI Experts</span>
           </h2>
           
            <div className="pill-badge">
-             Director Team
+           BPI Experts
            </div>
         </div>
 
