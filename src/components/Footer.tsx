@@ -14,20 +14,19 @@ export default function Footer() {
         
         {/* Call to Action Section */}
         <div className="cta-section">
-          <div style={{ maxWidth: '500px' }}>
+          <div style={{ maxWidth: '600px' }}>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', lineHeight: 1.1 }}>
-              Ready to <span className="text-primary-gradient">Scale?</span>
+              Build Resilient <span className="text-primary-gradient">Operations</span>
             </h2>
             <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>
-              Transform your business with our operational excellence. 
-              Let's build something extraordinary together.
+              Engage with Eight 8 Communication & Business Services to build resilient operations, intelligent service ecosystems, and scalable growth platforms that support your organization’s long-term objectives.
             </p>
           </div>
           
           <div className="newsletter-box">
             <input 
-              type="email" 
-              placeholder="Enter your email address" 
+              type="text" 
+              placeholder="Enter your work email" 
               className="newsletter-input"
             />
             <button className="submit-btn">
@@ -41,10 +40,10 @@ export default function Footer() {
           <div className="brand-col">
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.5rem' }}>
               <div style={{ width: '12px', height: '12px', background: 'var(--primary)', borderRadius: '50%' }}></div>
-              <span style={{ fontWeight: 700, fontSize: '1.4rem', letterSpacing: '-0.03em' }}>Eight</span>
+              <span style={{ fontWeight: 700, fontSize: '1.4rem', letterSpacing: '-0.03em' }}>Eight 8</span>
             </div>
             <p style={{ color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '2rem' }}>
-              We help businesses grow by providing top-tier BPO solutions tailored to your unique needs.
+              Eight 8 Communication & Business Services operates as a long-term enterprise services partner, delivering stability, governance, performance, and sustainable value creation for organizations worldwide.
             </p>
             <div className="social-links">
               <Link href="#" className="social-icon"><FaTwitter /></Link>
@@ -129,7 +128,7 @@ export default function Footer() {
 
         .submit-btn {
           background: var(--primary);
-          color: black;
+          color: white;
           border: none;
           width: 48px;
           height: 48px;

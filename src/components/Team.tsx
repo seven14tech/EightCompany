@@ -57,7 +57,7 @@ export default function Team() {
 
         .highlight {
           background: var(--primary);
-          color: black;
+          color: white;
           padding: 0 0.5rem;
           border-radius: 8px;
         }

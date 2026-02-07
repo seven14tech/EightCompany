@@ -7,27 +7,26 @@ export default function About() {
       <div className="container">
         <div className="about-grid">
            <div className="about-content">
-              <h2 className="section-header">
-                Seamless <span className="text-primary-gradient">Integration</span><br /> 
-                Superior Results
-              </h2>
-              <p className="about-description">
-                We are more than just a call center; we are your strategic partner in growing your business. Our agile teams integrate perfectly with your operations to deliver customer experiences that foster loyalty and retention.
-              </p>
-              
-              <div className="stats-grid">
-                 <div className="stat-item">
-                   <div className="stat-value">98%</div>
-                   <div className="stat-label">CSAT Score</div>
-                 </div>
-                 <div className="stat-item">
-                   <div className="stat-value">24/7</div>
-                   <div className="stat-label">Availability</div>
-                 </div>
+              <div className="badge" style={{ marginBottom: '1.5rem' }}>
+                CORPORATE VALUE PROPOSITION
               </div>
+              <h2 className="section-header">
+                Transforming Complexity into <span className="text-primary-gradient">Scalable Performance</span>
+              </h2>
+              <div className="about-description">
+                <p style={{ marginBottom: '1.5rem' }}>
+                  We partner with organizations to transform operational complexity into structured, efficient, and scalable business systems by delivering integrated enterprise solutions across people, process, and technology.
+                </p>
+                
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 700, margin: '1.5rem 0 0.5rem' }}>Corporate Mission</h3>
+                <p>
+                  To deliver structured, compliant, and scalable business services that enable organizations to achieve operational excellence, customer trust, and long-term enterprise value.
+                </p>
 
-              <div className="badge">
-                PREMIUM BPO SOLUTIONS
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 700, margin: '1.5rem 0 0.5rem' }}>Corporate Vision</h3>
+                <p>
+                  To establish a globally recognized enterprise services organization built on governance, performance, innovation, and trust.
+                </p>
               </div>
            </div>
            
@@ -85,7 +84,7 @@ export default function About() {
         .badge {
            display: inline-block;
            padding: 1rem 1.5rem; 
-           background: rgba(168, 224, 5, 0.1); 
+           background: rgba(56, 189, 248, 0.1); 
            color: var(--primary); 
            border: 1px solid var(--primary);
            border-radius: var(--radius-pill);

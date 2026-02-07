@@ -16,13 +16,13 @@ export default function Hero() {
         </div>
 
         <h1 className="hero-title">
-          Scaling Business Through <span className="text-primary-gradient">Operational Excellence</span>
+          Enterprise Communication & <span className="text-primary-gradient">Business Process Solutions</span>
         </h1>
 
         <div className="hero-content">
           <div className="hero-text">
             <p>
-              From 24/7 customer support to back-office management, we deliver seamless BPO strategies that elevate your efficiency and drive growth. A partner you can trust.
+              Eight 8 Communication & Business Services is a professional Business Process Outsourcing (BPO) and Contact Centre Solutions organization delivering enterprise-grade communication, operational management, and process optimization services to organizations worldwide.
             </p>
             
             <div className="cta-group">
@@ -80,7 +80,7 @@ export default function Hero() {
           transform: translateX(-50%);
           width: 600px;
           height: 600px;
-          background: radial-gradient(circle, rgba(168, 224, 5, 0.15) 0%, rgba(255,255,255,0) 70%);
+          background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(255,255,255,0) 70%);
           pointer-events: none;
           z-index: 1;
         }
