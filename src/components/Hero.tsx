@@ -11,16 +11,16 @@ export default function Hero() {
       
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         {/* Star Icon */}
-        <div className="star-icon animate-fade-in">
+        <div className="star-icon">
           ✸
         </div>
 
-        <h1 className="hero-title animate-fade-in" style={{ animationDelay: '0.1s' }}>
+        <h1 className="hero-title">
           Scaling Business Through <span className="text-primary-gradient">Operational Excellence</span>
         </h1>
 
         <div className="hero-content">
-          <div className="hero-text animate-fade-in" style={{ animationDelay: '0.2s' }}>
+          <div className="hero-text">
             <p>
               From 24/7 customer support to back-office management, we deliver seamless BPO strategies that elevate your efficiency and drive growth. A partner you can trust.
             </p>
@@ -35,11 +35,14 @@ export default function Hero() {
             </div>
           </div>
           
-          <div className="hero-image-wrapper animate-fade-in" style={{ animationDelay: '0.3s' }}>
-             <div className="hero-image-placeholder">
-               {/* Placeholder for Hero Image - would normally use Image component */}
-               Support Agent Image
-             </div>
+          <div className="hero-image-wrapper">
+             <Image 
+               src="/agent.jpg" 
+               alt="Expert BPI Agent" 
+               fill 
+               style={{ objectFit: 'cover', borderRadius: 'var(--radius-lg)' }}
+               priority
+             />
              
              {/* Floating badge */}
              <div className="floating-badge glass">

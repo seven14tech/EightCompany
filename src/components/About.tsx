@@ -6,41 +6,41 @@ export default function About() {
     <section id="about" className="section-padding" style={{ background: 'var(--surface)' }}>
       <div className="container">
         <div className="about-grid">
-          <div className="about-content">
-             <h2 className="section-header">
-               Seamless <span className="text-primary-gradient">Integration</span><br /> 
-               Superior Results
-             </h2>
-             <p className="about-description">
-               We are more than just a call center; we are your strategic partner in growing your business. Our agile teams integrate perfectly with your operations to deliver customer experiences that foster loyalty and retention.
-             </p>
-             
-             <div className="stats-grid">
-                <div className="stat-item">
-                  <div className="stat-value">98%</div>
-                  <div className="stat-label">CSAT Score</div>
-                </div>
-                <div className="stat-item">
-                  <div className="stat-value">24/7</div>
-                  <div className="stat-label">Availability</div>
-                </div>
-             </div>
+           <div className="about-content">
+              <h2 className="section-header">
+                Seamless <span className="text-primary-gradient">Integration</span><br /> 
+                Superior Results
+              </h2>
+              <p className="about-description">
+                We are more than just a call center; we are your strategic partner in growing your business. Our agile teams integrate perfectly with your operations to deliver customer experiences that foster loyalty and retention.
+              </p>
+              
+              <div className="stats-grid">
+                 <div className="stat-item">
+                   <div className="stat-value">98%</div>
+                   <div className="stat-label">CSAT Score</div>
+                 </div>
+                 <div className="stat-item">
+                   <div className="stat-value">24/7</div>
+                   <div className="stat-label">Availability</div>
+                 </div>
+              </div>
 
-             <div className="badge">
-               PREMIUM BPO SOLUTIONS
-             </div>
-          </div>
-          
-          <div className="about-images">
-             <div className="image-card primary-img">
-               {/* Placeholder */}
-               <div className="overlay"></div>
-             </div>
-             <div className="image-card secondary-img">
-               {/* Placeholder */}
-               <div className="overlay"></div>
-             </div>
-          </div>
+              <div className="badge">
+                PREMIUM BPO SOLUTIONS
+              </div>
+           </div>
+           
+           <div className="about-images">
+              <div className="image-card primary-img">
+                <Image src="/agent2.jpg" alt="Team collaboration" fill style={{ objectFit: 'cover' }} loading="lazy" />
+                <div className="overlay"></div>
+              </div>
+              <div className="image-card secondary-img">
+                <Image src="/agent3.jpg" alt="Office environment" fill style={{ objectFit: 'cover' }} loading="lazy" />
+                <div className="overlay"></div>
+              </div>
+           </div>
         </div>
       </div>
 

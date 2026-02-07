@@ -1,5 +1,6 @@
 'use client';
 import { FaLinkedin, FaTwitter } from 'react-icons/fa';
+import Image from 'next/image';
 
 const team = [
   { name: 'Sarah Jenkins', role: 'Head of Business Transformation', exp: 'Lean Six Sigma Black Belt' },
@@ -26,7 +27,7 @@ export default function Team() {
           {team.map((member, i) => (
             <div key={i} className="card team-card">
                <div className="avatar-placeholder">
-                 {/* Placeholder for avatar */}
+                 <Image src="/agent.jpg" alt={member.name} fill style={{ objectFit: 'cover' }} loading="lazy" />
                </div>
                
                <h3 className="member-name">{member.name}</h3>
@@ -94,6 +95,7 @@ export default function Team() {
           margin: 0 auto 1.5rem;
           overflow: hidden;
           transition: transform 0.3s ease;
+          position: relative;
         }
         
         .team-card:hover .avatar-placeholder {
