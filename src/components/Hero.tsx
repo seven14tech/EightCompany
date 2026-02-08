@@ -2,213 +2,209 @@
 import Image from 'next/image';
 import { FaArrowRight } from 'react-icons/fa';
 import { useModal } from '@/context/ModalContext';
+import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
 
 export default function Hero() {
   const { openModal } = useModal();
+  
   return (
     <section className="hero-section">
-      <div className="glow-effect"></div>
+      <div className="hero-bg">
+        <Image 
+          src="/heropage.jpeg" 
+          alt="Background" 
+          fill 
+          style={{ objectFit: 'cover' }} 
+          priority 
+          className="hero-bg-img"
+        />
+        <div className="hero-overlay"></div>
+      </div>
       
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-        {/* Star Icon */}
-        <div className="star-icon">
-          ✸
+        
+        <div className="hero-content-centered">
+
+           
+           <h1 className="hero-title text-white">
+             <AnimatedText text="Enterprise Communication &" /> <br />
+             <span className="text-gradient-light"><AnimatedText text="Business Process Solutions" delay={0.5} /></span>
+           </h1>
+
+           <p className="hero-desc text-white-dim">
+              Eight 8 Communication & Business Services is a professional **Business Process Outsourcing (BPO)** and **Contact Centre Solutions** provider. We deliver enterprise-grade communication, operations, and process management services to organizations globally.
+           </p>
+           
+           <div className="cta-wrapper centered">
+              <button className="btn btn-primary btn-lg" onClick={openModal}>
+                Get a Callback <FaArrowRight size={14} style={{ marginLeft: '8px' }}/>
+              </button>
+
+           </div>
+
+           <div className="trust-badges glass-panel">
+              <div className="trust-item">
+                 <span className="trust-val">500+</span>
+                 <span className="trust-label">Agents</span>
+              </div>
+              <div className="divider-light"></div>
+              <div className="trust-item">
+                 <span className="trust-val">10+</span>
+                 <span className="trust-label">Years Exp.</span>
+              </div>
+              <div className="divider-light"></div>
+              <div className="trust-item">
+                 <span className="trust-val">24/7</span>
+                 <span className="trust-label">Support</span>
+              </div>
+           </div>
         </div>
 
-        <h1 className="hero-title">
-          Enterprise Communication & <span className="text-primary-gradient">Business Process Solutions</span>
-        </h1>
-
-        <div className="hero-content">
-          <div className="hero-text">
-            <p>
-              Eight 8 Communication & Business Services is a professional Business Process Outsourcing (BPO) and Contact Centre Solutions organization delivering enterprise-grade communication, operational management, and process optimization services to organizations worldwide.
-            </p>
-            
-            <div className="cta-group">
-               <button className="btn btn-primary" onClick={openModal}>
-                 Get a Callback
-               </button>
-               <button className="btn btn-outline">
-                 Our Solutions
-               </button>
-            </div>
-          </div>
-          
-          <div className="hero-image-wrapper">
-             <Image 
-               src="/agent.jpg" 
-               alt="Expert BPI Agent" 
-               fill 
-               style={{ objectFit: 'cover', borderRadius: 'var(--radius-lg)' }}
-               priority
-             />
-             
-             {/* Floating badge */}
-             <div className="floating-badge glass">
-                <div style={{ color: 'var(--primary)', fontWeight: 'bold', fontSize: '1.2rem' }}>99.9%</div>
-                <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>SLA Uptime</div>
-             </div>
-          </div>
-        </div>
-
-        {/* Stats Bar */}
-        <div className="stats-bar animate-fade-in" style={{ animationDelay: '0.5s' }}>
-           <Stat number="500+" label="Agents" />
-           <Stat number="10+" label="Years Exp." />
-           <Stat number="24/7" label="Support Coverage" />
-           <Stat number="1M+" label="Calls Handled" />
-        </div>
       </div>
       
       <style jsx>{`
         .hero-section {
           padding-top: 180px;
-          padding-bottom: 80px;
-          text-align: center;
+          padding-bottom: 100px;
           position: relative;
-          overflow: hidden;
           min-height: 100vh;
           display: flex;
+          flex-direction: column;
+          justify-content: center;
           align-items: center;
+          overflow: hidden;
         }
 
-        .glow-effect {
+        .hero-bg {
           position: absolute;
-          top: -20%;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 600px;
-          height: 600px;
-          background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(255,255,255,0) 70%);
-          pointer-events: none;
+          inset: 0;
+          z-index: 0;
+        }
+
+        .hero-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to bottom, rgba(0, 15, 40, 0.7), rgba(0, 15, 40, 0.85));
           z-index: 1;
         }
 
-        .star-icon {
-          font-size: 3rem;
-          color: var(--primary);
-          margin-bottom: 2rem;
-          animation: spin 10s linear infinite;
-        }
-
-        .hero-title {
-          font-size: clamp(3rem, 6vw, 5.5rem);
-          line-height: 1.05;
-          margin-bottom: 3rem;
-          max-width: 1000px;
-          margin-left: auto;
-          margin-right: auto;
-          font-weight: 700;
-        }
-
-        .hero-content {
-          display: flex;
-          justify-content: center;
-          align-items: center; 
-          gap: 4rem; 
-          margin-bottom: 6rem;
-          flex-wrap: wrap;
-          text-align: left;
-        }
-
-        .hero-text {
-          flex: 1;
-          min-width: 300px;
-          max-width: 500px;
-        }
-        
-        .hero-text p {
-          font-size: 1.1rem;
-          color: var(--text-muted);
-          line-height: 1.6;
-          margin-bottom: 2rem;
-        }
-
-        .cta-group {
-          display: flex;
-          gap: 1rem;
-        }
-
-        .hero-image-wrapper {
-          position: relative;
-          width: 100%; 
-          max-width: 400px;
-          height: 450px;
-          border-radius: var(--radius-lg);
-          border: 1px solid var(--surface-border);
-          padding: 10px;
-          background: #ffffff;
-          transform: rotate(2deg);
-          box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-          transition: transform 0.3s ease;
-        }
-
-        .hero-image-wrapper:hover {
-          transform: rotate(0deg);
-        }
-
-        .hero-image-placeholder {
-           width: 100%;
-           height: 100%;
-           background: linear-gradient(135deg, #f4f4f5, #e4e4e7);
-           border-radius: 16px;
-           display: flex;
-           align-items: center;
-           justify-content: center;
-           color: var(--text-muted);
-           font-weight: 500;
-        }
-
-        .floating-badge {
-          position: absolute;
-          bottom: 30px;
-          left: -30px;
-          padding: 1rem 1.5rem;
-          border-radius: 16px;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        .hero-content-centered {
           display: flex;
           flex-direction: column;
           align-items: center;
-          min-width: 140px;
-          background: rgba(255, 255, 255, 0.9);
+          text-align: center;
+          max-width: 1000px;
+          margin: 0 auto;
         }
 
-        .stats-bar {
-          background: rgba(255, 255, 255, 0.5);
-          backdrop-filter: blur(10px);
-          border: 1px solid var(--surface-border);
-          border-radius: var(--radius-lg);
-          padding: 3rem;
+
+
+        .hero-title {
+          font-size: clamp(2.5rem, 5vw, 4.5rem);
+          line-height: 1.1;
+          font-weight: 800;
+          letter-spacing: -0.02em;
+          margin-bottom: 2rem;
+          color: white;
+        }
+
+        .text-gradient-light {
+          color: #38BDF8;
+          display: inline-block;
+        }
+
+        .hero-desc {
+          font-size: 1.2rem;
+          color: rgba(255, 255, 255, 0.85);
+          line-height: 1.7;
+          margin-bottom: 3rem;
+          max-width: 800px;
+        }
+
+        .cta-wrapper {
           display: flex;
-          justify-content: space-around;
-          flex-wrap: wrap;
-          gap: 3rem;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+          align-items: center;
+          gap: 1.5rem;
+          margin-bottom: 4rem;
+        }
+        
+        .cta-wrapper.centered {
+          justify-content: center;
         }
 
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+        .btn-lg {
+          padding: 1rem 2.5rem;
+          font-size: 1.1rem;
+        }
+
+
+
+        .trust-badges {
+          display: flex;
+          align-items: center;
+          gap: 3rem;
+          padding: 2rem 4rem;
+          border-radius: 20px;
+        }
+
+        .glass-panel {
+          background: rgba(0, 30, 60, 0.4);
+          backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .trust-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .trust-val {
+          font-size: 2rem;
+          font-weight: 700;
+          color: white;
+          line-height: 1;
+          margin-bottom: 6px;
+        }
+
+        .trust-label {
+          font-size: 0.85rem;
+          font-weight: 500;
+          color: rgba(255, 255, 255, 0.7);
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+
+        .divider-light {
+          width: 1px;
+          height: 40px;
+          background: rgba(255, 255, 255, 0.2);
         }
 
         @media (max-width: 900px) {
-          .hero-content {
-            flex-direction: column;
-            text-align: center;
-            gap: 3rem;
+          .hero-title {
+             font-size: 2.5rem;
           }
-          .hero-text {
-            text-align: center;
-            max-width: 100%;
+          .cta-wrapper {
+             flex-direction: column;
+             gap: 1rem;
+             width: 100%;
           }
-          .cta-group {
-            justify-content: center;
+           .btn-lg, .btn-outline-light {
+             width: 100%;
+             justify-content: center;
+           }
+          .trust-badges {
+             flex-direction: column;
+             gap: 2rem;
+             width: 100%;
+             padding: 2rem;
           }
-          .floating-badge {
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: -20px;
+          .divider-light {
+             width: 40px;
+             height: 1px;
           }
         }
       `}</style>
@@ -216,11 +212,34 @@ export default function Hero() {
   );
 }
 
-function Stat({ number, label }: { number: string, label: string }) {
+function AnimatedText({ text, delay = 0 }: { text: string, delay?: number }) {
+  const el = useRef<HTMLSpanElement>(null);
+  
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".char", {
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.03,
+        ease: "back.out(1.7)",
+        delay: delay
+      });
+    }, el);
+    return () => ctx.revert();
+  }, [delay]);
+
   return (
-    <div style={{ textAlign: 'center' }}>
-      <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--foreground)', lineHeight: 1 }}>{number}</div>
-      <div style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginTop: '0.5rem', fontWeight: 500 }}>{label}</div>
-    </div>
-  )
+    <span ref={el} style={{ display: 'inline-block' }}>
+      {text.split(" ").map((word, i) => (
+        <span key={i} style={{ display: 'inline-block', whiteSpace: 'nowrap', marginRight: '0.25em' }}>
+          {word.split("").map((char, j) => (
+             <span key={j} className="char" style={{ display: 'inline-block' }}>
+               {char}
+             </span>
+          ))}
+        </span>
+      ))}
+    </span>
+  );
 }

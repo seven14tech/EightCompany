@@ -17,87 +17,171 @@ export default function Industries() {
     <section id="industries" className="section-padding" style={{ background: 'var(--surface)' }}>
       <div className="container">
         <h2 style={{ fontSize: '2.5rem', marginBottom: '4rem', textAlign: 'center', fontWeight: 700 }}>
-          Strategic <span className="text-primary-gradient">Differentiators</span>
+          Corporate <span className="text-primary-gradient">Strategy</span>
         </h2>
         
-        <div className="industries-grid">
-             {industries.map((ind, i) => (
-               <div key={i} className="card industry-card">
-                  <div className="icon-wrapper">
-                    <ind.icon size={32} />
-                  </div>
-                  <h3 className="industry-name">{ind.name}</h3>
-                  <p className="industry-desc">{ind.desc}</p>
+        <div className="strategy-grid">
+           {/* Column 1: Value Proposition */}
+           <div className="strategy-col">
+             <div className="col-header">
+               <div className="icon-wrapper">
+                  <FaChartLine size={24} />
                </div>
-             ))}
+               <h3>Corporate Value Proposition</h3>
+               <p className="col-desc">
+                 We partner with organizations to transform operational complexity into structured, efficient, and scalable business systems.
+               </p>
+             </div>
+             
+             <ul className="strategy-list">
+               {[
+                 "Enterprise BPO & Shared Services Solutions",
+                 "Multi-channel Contact Centre Operations",
+                 "Customer Experience Transformation",
+                 "Revenue Enablement & Growth Services",
+                 "Process Optimization & Automation",
+                 "Technology-Driven Service Models",
+                 "Governance, Risk & Compliance Frameworks"
+               ].map((item, i) => (
+                 <li key={i}>
+                   <FaHeartbeat className="list-icon" />
+                   {item}
+                 </li>
+               ))}
+             </ul>
+           </div>
+
+           {/* Column 2: Differentiators */}
+           <div className="strategy-col">
+             <div className="col-header">
+               <div className="icon-wrapper">
+                  <FaPlane size={24} />
+               </div>
+               <h3>Strategic Differentiators</h3>
+               <p className="col-desc">
+                  Our operational excellence is built on a foundation of structured governance, scalable frameworks, and secure infrastructure.
+               </p>
+             </div>
+             
+             <ul className="strategy-list">
+               {[
+                 "Enterprise-grade service architecture",
+                 "Structured governance & operational frameworks",
+                 "Scalable workforce deployment models",
+                 "Performance-driven service delivery",
+                 "Regulatory and compliance alignment",
+                 "Secure data management infrastructure",
+                 "Continuous improvement methodologies",
+                 "Industry-aligned operational expertise"
+               ].map((item, i) => (
+                 <li key={i}>
+                   <FaShoppingCart className="list-icon" />
+                   {item}
+                 </li>
+               ))}
+             </ul>
+           </div>
         </div>
       </div>
       <style jsx>{`
-        .industries-grid {
+        .strategy-grid {
            display: grid; 
-           grid-template-columns: repeat(4, 1fr); 
-           gap: 2rem;
+           grid-template-columns: 1fr 1fr; 
+           gap: 3rem;
            margin-top: 3rem;
         }
 
-        .industry-card {
-           text-align: left;
-           padding: 2rem;
-           background: #ffffff;
-           border: 1px solid var(--surface-border);
-           border-radius: var(--radius-lg);
-           transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-           display: flex;
-           flex-direction: column;
-           height: 100%;
+        .strategy-col {
+           background: #ffffff; /* Use white but with a nice shadow */
+           padding: 0; /* Removing padding from container to let items breathe, or keep transparent */
+           background: transparent;
+        }
+
+        .col-header {
+          background: var(--primary);
+          padding: 2rem;
+          border-radius: var(--radius-lg);
+          color: white;
+          margin-bottom: 2rem;
+          position: relative;
+          overflow: hidden;
+          box-shadow: 0 10px 30px rgba(0, 51, 102, 0.3);
+        }
+
+        .col-header::before {
+           content: '';
+           position: absolute;
+           top: 0; left: 0; right: 0; bottom: 0;
+           background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+        }
+
+        .col-header h3 {
+          font-size: 1.5rem;
+          font-weight: 700;
+          position: relative;
+          z-index: 2;
         }
         
-        .industry-card:hover {
-           border-color: var(--primary);
-           transform: translateY(-5px);
-           box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        .col-header .icon-wrapper {
+          background: rgba(255, 255, 255, 0.2);
+          color: white;
+          margin-bottom: 1rem;
+          width: 48px;
+          height: 48px;
+        }
+
+        .col-header .col-desc {
+          color: rgba(255, 255, 255, 0.9);
+          margin-bottom: 0;
+          font-size: 1rem;
+          max-width: 90%;
         }
 
         .icon-wrapper {
-          color: var(--primary);
-          margin-bottom: 1.5rem;
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          width: 50px;
-          height: 50px;
-          background: rgba(56, 189, 248, 0.05);
           border-radius: 12px;
           transition: all 0.3s ease;
         }
 
-        .industry-card:hover .icon-wrapper {
-          background: var(--primary);
-          color: black;
+        .strategy-list {
+          list-style: none;
+          display: flex;
+          flex-direction: column;
+          gap: 0.8rem;
         }
 
-        .industry-name {
-          font-size: 1.1rem;
-          margin-bottom: 0.8rem;
-          font-weight: 700;
+        .strategy-list li {
+          background: #ffffff;
+          padding: 1.2rem 1.5rem;
+          border-radius: var(--radius-md);
+          border: 1px solid var(--surface-border);
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          font-weight: 600;
           color: var(--foreground);
+          transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+          box-shadow: 0 4px 6px rgba(0,0,0,0.02);
         }
 
-        .industry-desc {
-          color: var(--text-muted);
-          font-size: 0.9rem;
-          line-height: 1.6;
+        .strategy-list li:hover {
+          transform: translateX(5px);
+          border-color: var(--accent);
+          box-shadow: 0 10px 20px rgba(56, 189, 248, 0.15);
         }
 
-        @media (max-width: 1200px) {
-           .industries-grid {
-             grid-template-columns: repeat(2, 1fr);
-           }
+        .strategy-list li :global(.list-icon) {
+          color: var(--cta); /* Use Orange for list icons to pop */
+          flex-shrink: 0;
+          font-size: 1.1rem;
         }
 
-        @media (max-width: 600px) {
-           .industries-grid {
+        @media (max-width: 900px) {
+           .strategy-grid {
              grid-template-columns: 1fr;
+             gap: 3rem;
            }
         }
       `}</style>

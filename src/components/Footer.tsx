@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
-import { FaArrowRight, FaTwitter, FaLinkedin, FaInstagram, FaGithub } from 'react-icons/fa';
+import Image from 'next/image';
+import { FaArrowRight, FaTwitter, FaLinkedin, FaInstagram, FaGithub, FaPhone, FaEnvelope } from 'react-icons/fa';
 
 export default function Footer() {
   return (
@@ -12,35 +13,53 @@ export default function Footer() {
     }}>
       <div className="container">
         
-        {/* Call to Action Section */}
+        {/* Contact Section */}
         <div className="cta-section">
-          <div style={{ maxWidth: '600px' }}>
-            <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem', lineHeight: 1.1 }}>
-              Build Resilient <span className="text-primary-gradient">Operations</span>
+          
+          {/* Left: Agent Image on Image with Phone/Email */}
+          <div className="contact-image-wrapper group">
+             <Image 
+               src="/agent.jpg" 
+               alt="Contact Agent" 
+               width={400} 
+               height={300}
+               style={{ width: '100%', height: '100%', objectFit: 'cover', mixBlendMode: 'multiply' }}
+             />
+             <div className="contact-overlay">
+                <div className="contact-detail">
+                   <FaEnvelope className="icon-sm" />
+                   <a href="mailto:info@eight8.co">info@eight8.co</a>
+                </div>
+                <div className="contact-detail">
+                   <FaPhone className="icon-sm" />
+                   <a href="tel:+15550000000">+1 (555) 000-0000</a>
+                </div>
+             </div>
+          </div>
+
+          {/* Right: Text Content */}
+          <div className="contact-content">
+            <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', lineHeight: 1.1 }}>
+              Contact <span className="text-primary-gradient">Us</span>
             </h2>
-            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>
+            <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem', lineHeight: 1.6 }}>
               Engage with Eight 8 Communication & Business Services to build resilient operations, intelligent service ecosystems, and scalable growth platforms that support your organization’s long-term objectives.
             </p>
           </div>
-          
-          <div className="newsletter-box">
-            <input 
-              type="text" 
-              placeholder="Enter your work email" 
-              className="newsletter-input"
-            />
-            <button className="submit-btn">
-              <FaArrowRight />
-            </button>
-          </div>
+
         </div>
 
         {/* Links Grid */}
         <div className="footer-grid">
           <div className="brand-col">
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.5rem' }}>
-              <div style={{ width: '12px', height: '12px', background: 'var(--primary)', borderRadius: '50%' }}></div>
-              <span style={{ fontWeight: 700, fontSize: '1.4rem', letterSpacing: '-0.03em' }}>Eight 8</span>
+            <div style={{ marginBottom: '1.5rem' }}>
+              <Image 
+                src="/logo.png" 
+                alt="Eight 8 Logo" 
+                width={240} 
+                height={80} 
+                style={{ width: 'auto', height: '80px', objectFit: 'contain' }}
+              />
             </div>
             <p style={{ color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '2rem' }}>
               Eight 8 Communication & Business Services operates as a long-term enterprise services partner, delivering stability, governance, performance, and sustainable value creation for organizations worldwide.
@@ -88,60 +107,61 @@ export default function Footer() {
       
       <style jsx>{`
         .cta-section {
-          display: flex; 
-          justify-content: space-between; 
-          flex-wrap: wrap;
-          gap: 3rem;
+          display: grid; 
+          grid-template-columns: 1fr 1.5fr;
+          gap: 4rem;
           margin-bottom: 6rem;
           align-items: center;
           padding-bottom: 4rem;
           border-bottom: 1px solid var(--surface-border);
         }
 
-        .newsletter-box {
-           background: var(--background); 
-           padding: 0.5rem; 
-           border-radius: 50px;
-           display: flex;
-           align-items: center;
-           width: 100%;
-           maxWidth: 400px;
-           border: 1px solid var(--surface-border);
-           transition: border-color 0.3s ease;
-           box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        .contact-image-wrapper {
+          position: relative;
+          border-radius: 20px;
+          overflow: hidden;
+          height: 320px;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+          border: 1px solid var(--surface-border);
+          transform: translateY(-50px);
         }
 
-        .newsletter-box:focus-within {
-          border-color: var(--primary);
+        .contact-overlay {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          background: rgba(15, 23, 42, 0.85); /* Dark overlay */
+          backdrop-filter: blur(5px);
+          padding: 1.5rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.8rem;
+          transform: translateY(0);
+          transition: transform 0.3s ease;
         }
 
-        .newsletter-input {
-          background: transparent; 
-          border: none; 
-          color: var(--foreground); 
-          flex: 1;
-          outline: none;
-          padding: 0.5rem 1.5rem;
-          font-family: var(--font-sans);
-          font-size: 1rem;
-        }
-
-        .submit-btn {
-          background: var(--primary);
-          color: white;
-          border: none;
-          width: 48px;
-          height: 48px;
-          border-radius: 50%;
-          cursor: pointer;
+        .contact-detail {
           display: flex;
           align-items: center;
-          justify-content: center;
-          transition: transform 0.2s ease;
+          gap: 10px;
+          color: white;
+          font-weight: 500;
+          font-size: 0.95rem;
         }
 
-        .submit-btn:hover {
-          transform: scale(1.05);
+        .contact-detail a {
+          color: white;
+          text-decoration: none;
+          transition: color 0.2s;
+        }
+
+        .contact-detail a:hover {
+          color: var(--primary);
+        }
+        
+        .icon-sm {
+           color: var(--primary);
         }
 
         .footer-grid {
@@ -230,8 +250,11 @@ export default function Footer() {
             gap: 2.5rem;
           }
           .cta-section {
-            flex-direction: column;
-            align-items: flex-start;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+          }
+          .contact-image-wrapper {
+             height: 250px;
           }
           .footer-bottom {
             flex-direction: column;

@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useModal } from '@/context/ModalContext';
@@ -23,7 +24,6 @@ export default function Navbar() {
   return (
     <>
       <nav 
-        className="glass" 
         style={{
           position: 'fixed',
           top: scrolled ? '20px' : '40px',
@@ -32,17 +32,25 @@ export default function Navbar() {
           zIndex: 100,
           width: '90%',
           maxWidth: '1200px',
-          padding: '0.8rem 1.5rem',
+          padding: '0.5rem 1.5rem',
           borderRadius: 'var(--radius-pill)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          transition: 'all 0.4s ease'
+          transition: 'all 0.4s ease',
+          backgroundColor: '#ffffff',
+          boxShadow: '0 4px 20px rgba(0,0,0,0.08)'
         }}
       >
-        <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-          <div style={{ width: '12px', height: '12px', background: 'var(--primary)', borderRadius: '50%', boxShadow: '0 0 10px var(--primary)' }}></div>
-          <span style={{ fontWeight: 700, fontSize: '1.4rem', letterSpacing: '-0.03em' }}>Eight</span>
+        <Link href="/" style={{ display: 'flex', alignItems: 'center' }}>
+          <Image 
+            src="/logo.png" 
+            alt="Eight 8 Logo" 
+            width={200} 
+            height={60} 
+            style={{ width: 'auto', height: '60px', objectFit: 'contain', mixBlendMode: 'multiply' }}
+            priority
+          />
         </Link>
 
         <div className="nav-links">
@@ -52,15 +60,7 @@ export default function Navbar() {
           <Link href="#process" className="nav-link">Process</Link>
         </div>
 
-        <div className="desktop-actions">
-          <button 
-            className="btn btn-primary" 
-            style={{ padding: '0.6rem 1.4rem', fontSize: '0.9rem' }}
-            onClick={openModal}
-          >
-            Get a Callback
-          </button>
-        </div>
+        <div className="desktop-actions" style={{ display: 'none' }}></div>
 
         <button className="mobile-toggle" onClick={toggleMenu}>
           {isMenuOpen ? <FaTimes /> : <FaBars />}
@@ -74,16 +74,7 @@ export default function Navbar() {
           <Link href="#services" className="mobile-nav-link" onClick={closeMenu}>Services</Link>
           <Link href="#industries" className="mobile-nav-link" onClick={closeMenu}>Industries</Link>
           <Link href="#process" className="mobile-nav-link" onClick={closeMenu}>Process</Link>
-          <button 
-            className="btn btn-primary" 
-            style={{ marginTop: '1rem', width: '100%' }}
-            onClick={() => {
-              closeMenu();
-              openModal();
-            }}
-          >
-            Get a Callback
-          </button>
+
         </div>
       </div>
 
