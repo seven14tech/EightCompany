@@ -1,19 +1,29 @@
 'use client';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useLayoutEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
 
 export default function Preloader() {
   const [percent, setPercent] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const isMounted = useRef(false);
+
+  // Use layout effect to ensure styles are applied before paint
+  useLayoutEffect(() => {
+    isMounted.current = true;
+    document.body.style.overflow = 'hidden';
+    document.body.style.opacity = '1'; // Reveal body once JS loads
+    
+    // Cleanup
+    return () => {
+      document.body.style.overflow = 'auto';
+      document.body.style.opacity = '1';
+    };
+  }, []);
 
   useEffect(() => {
-    // Prevent scrolling while loading
-    document.body.style.overflow = 'hidden';
-
     const progress = { value: 0 };
-    const tl = gsap.timeline();
-
-    // Start by animating to 90% slowly to simulate progress
+    
+    // Initial slow load to 90%
     const initialTween = gsap.to(progress, {
       value: 90,
       duration: 3, 
@@ -22,23 +32,19 @@ export default function Preloader() {
     });
 
     const onPageLoad = () => {
-      // Stop the initial "fake" loading
       initialTween.kill();
-
-      // Animate from current % to 100% quickly
       gsap.to(progress, {
         value: 100,
         duration: 0.5,
         onUpdate: () => setPercent(Math.round(progress.value)),
         onComplete: () => {
-          // Slide out animation
           gsap.to(containerRef.current, {
             y: '-100%',
             duration: 0.8,
             ease: 'power4.inOut',
-            delay: 0.2,
             onComplete: () => {
-              document.body.style.overflow = 'auto'; // Restore scroll
+               // Ensure scroll is restored
+               document.body.style.overflow = 'auto'; 
             }
           });
         }
@@ -49,16 +55,13 @@ export default function Preloader() {
       onPageLoad();
     } else {
       window.addEventListener('load', onPageLoad);
-      // Fallback safety timeout (in case of stalled resources)
       setTimeout(() => {
         if (progress.value < 100) onPageLoad();
-      }, 5000); 
+      }, 4000); 
     }
 
     return () => {
       window.removeEventListener('load', onPageLoad);
-      document.body.style.overflow = 'auto';
-      tl.kill();
     };
   }, []);
 

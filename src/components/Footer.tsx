@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { FaArrowRight, FaTwitter, FaLinkedin, FaInstagram, FaGithub, FaPhone, FaEnvelope } from 'react-icons/fa';
 
 export default function Footer() {
+  // Footer Component Updated
   return (
     <footer style={{ 
       background: 'var(--surface)', 
